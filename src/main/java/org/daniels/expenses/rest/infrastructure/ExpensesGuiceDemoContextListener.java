@@ -36,6 +36,6 @@ public class ExpensesGuiceDemoContextListener extends GuiceServletContextListene
 
                 filter("/web/*").through(ResponseCorsFilter.class);
             }
-        }, new UserModule());
+        },new SpringContextModule(), new UserModule());
     }
 }

@@ -1,4 +1,4 @@
-package org.daniels.samples.rest.tests.integration.web.infrastructure;
+package org.daniels.expenses.rest.tests.integration.web.infrastructure;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;

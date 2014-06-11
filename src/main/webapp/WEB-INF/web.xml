@@ -9,7 +9,40 @@
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
     <display-name>Restful Web Application</display-name>
-
+   
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:/applicationContext-resources.xml
+            classpath:/applicationContext-dao.xml
+            classpath:/applicationContext-service.xml
+            classpath*:/applicationContext.xml
+            /WEB-INF/applicationContext*.xml
+        </param-value>
+    </context-param>
+    <servlet>
+        <description></description>
+        <display-name>CalServlet</display-name>
+        <servlet-name>CalServlet</servlet-name>
+        <servlet-class>org.daniels.expenses.service.impl.CalServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CalServlet</servlet-name>
+        <url-pattern>/CalServlet</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+        
     <filter>
         <filter-name>guiceFilter</filter-name>
         <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
@@ -20,8 +53,37 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+   <filter>
+          <filter-name>hibernateFilter</filter-name>
+          <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+          <init-param>
+             <param-name>sessionFactoryBeanName</param-name>
+             <param-value>sessionFactory</param-value>         
+          </init-param>      
+       </filter>
+
+    <filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <listener>
         <listener-class>org.daniels.expenses.rest.infrastructure.ExpensesGuiceDemoContextListener</listener-class>
     </listener>
+
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+   
+   
+   
 
 </web-app>

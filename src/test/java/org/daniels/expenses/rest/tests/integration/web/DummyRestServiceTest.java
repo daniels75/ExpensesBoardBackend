@@ -1,10 +1,10 @@
-package org.daniels.samples.rest.tests.integration.web;
+package org.daniels.expenses.rest.tests.integration.web;
 
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import org.daniels.samples.rest.tests.integration.web.infrastructure.ClientProvider;
-import org.daniels.samples.rest.tests.integration.web.infrastructure.ServerProvider;
+import org.daniels.expenses.rest.tests.integration.web.infrastructure.ClientProvider;
+import org.daniels.expenses.rest.tests.integration.web.infrastructure.ServerProvider;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

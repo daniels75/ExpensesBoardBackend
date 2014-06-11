@@ -1,4 +1,4 @@
-package org.daniels.samples.rest.tests.integration.web.infrastructure;
+package org.daniels.expenses.rest.tests.integration.web.infrastructure;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
